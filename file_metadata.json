@@ -1,0 +1,153 @@
+{
+    "kind": "drive#file",
+    "id": "1alI9X1YZRa2XY6eBMOMXWbOYXTiEPrxg",
+    "name": "maongezi_001.wav",
+    "mimeType": "audio/wav",
+    "starred": false,
+    "trashed": false,
+    "explicitlyTrashed": false,
+    "parents": [
+        "0AH5TVxwje5BxUk9PVA"
+    ],
+    "spaces": [
+        "drive"
+    ],
+    "version": "4",
+    "webContentLink": "https://drive.google.com/uc?id=1alI9X1YZRa2XY6eBMOMXWbOYXTiEPrxg&export=download",
+    "webViewLink": "https://drive.google.com/file/d/1alI9X1YZRa2XY6eBMOMXWbOYXTiEPrxg/view?usp=drivesdk",
+    "iconLink": "https://drive-thirdparty.googleusercontent.com/16/type/audio/wav",
+    "hasThumbnail": false,
+    "thumbnailVersion": "0",
+    "viewedByMe": true,
+    "viewedByMeTime": "2025-11-19T07:18:46.972Z",
+    "createdTime": "2025-11-19T07:06:50.238Z",
+    "modifiedTime": "2025-11-19T07:30:20.461Z",
+    "modifiedByMeTime": "2025-11-19T07:30:20.461Z",
+    "modifiedByMe": true,
+    "owners": [
+        {
+            "kind": "drive#user",
+            "displayName": "sautiflow",
+            "photoLink": "https://lh3.googleusercontent.com/a/ACg8ocLq2DJ_ZSHCaOaFGKk7jg292UmEDiwTb0_G-nhhfOjG1U41-Q=s64",
+            "me": true,
+            "permissionId": "08999140954505643399",
+            "emailAddress": "sautiflow@gmail.com"
+        }
+    ],
+    "lastModifyingUser": {
+        "kind": "drive#user",
+        "displayName": "sautiflow",
+        "photoLink": "https://lh3.googleusercontent.com/a/ACg8ocLq2DJ_ZSHCaOaFGKk7jg292UmEDiwTb0_G-nhhfOjG1U41-Q=s64",
+        "me": true,
+        "permissionId": "08999140954505643399",
+        "emailAddress": "sautiflow@gmail.com"
+    },
+    "shared": true,
+    "ownedByMe": true,
+    "downloadRestrictions": {
+        "itemDownloadRestriction": {
+            "restrictedForReaders": false,
+            "restrictedForWriters": false
+        },
+        "effectiveDownloadRestrictionWithContext": {
+            "restrictedForReaders": false,
+            "restrictedForWriters": false
+        }
+    },
+    "capabilities": {
+        "canAcceptOwnership": false,
+        "canAddChildren": false,
+        "canAddMyDriveParent": false,
+        "canChangeCopyRequiresWriterPermission": true,
+        "canChangeItemDownloadRestriction": true,
+        "canChangeSecurityUpdateEnabled": false,
+        "canChangeViewersCanCopyContent": true,
+        "canComment": true,
+        "canCopy": true,
+        "canDelete": true,
+        "canDisableInheritedPermissions": false,
+        "canDownload": true,
+        "canEdit": true,
+        "canEnableInheritedPermissions": true,
+        "canListChildren": false,
+        "canModifyContent": true,
+        "canModifyContentRestriction": true,
+        "canModifyEditorContentRestriction": true,
+        "canModifyOwnerContentRestriction": true,
+        "canModifyLabels": false,
+        "canMoveChildrenWithinDrive": false,
+        "canMoveItemIntoTeamDrive": true,
+        "canMoveItemOutOfDrive": true,
+        "canMoveItemWithinDrive": true,
+        "canReadLabels": false,
+        "canReadRevisions": true,
+        "canRemoveChildren": false,
+        "canRemoveContentRestriction": false,
+        "canRemoveMyDriveParent": true,
+        "canRename": true,
+        "canShare": true,
+        "canTrash": true,
+        "canUntrash": true
+    },
+    "viewersCanCopyContent": true,
+    "copyRequiresWriterPermission": false,
+    "writersCanShare": true,
+    "permissions": [
+        {
+            "kind": "drive#permission",
+            "id": "anyoneWithLink",
+            "type": "anyone",
+            "role": "reader",
+            "allowFileDiscovery": false,
+            "permissionDetails": [
+                {
+                    "permissionType": "file",
+                    "role": "reader",
+                    "inherited": false
+                }
+            ]
+        },
+        {
+            "kind": "drive#permission",
+            "id": "08999140954505643399",
+            "type": "user",
+            "emailAddress": "sautiflow@gmail.com",
+            "role": "owner",
+            "displayName": "sautiflow",
+            "photoLink": "https://lh3.googleusercontent.com/a/ACg8ocLq2DJ_ZSHCaOaFGKk7jg292UmEDiwTb0_G-nhhfOjG1U41-Q=s64",
+            "permissionDetails": [
+                {
+                    "permissionType": "file",
+                    "role": "owner",
+                    "inherited": false
+                },
+                {
+                    "permissionType": "file",
+                    "role": "writer",
+                    "inherited": true
+                }
+            ],
+            "deleted": false,
+            "pendingOwner": false
+        }
+    ],
+    "permissionIds": [
+        "anyoneWithLink",
+        "08999140954505643399"
+    ],
+    "originalFilename": "maongezi_001.wav",
+    "fullFileExtension": "wav",
+    "fileExtension": "wav",
+    "md5Checksum": "a9eaacbd578fe65d60de2ecb1eaff190",
+    "sha1Checksum": "fe5ccb31282df232b26005eecd9749eb0bd207a3",
+    "sha256Checksum": "693728f4d052ddd0b662de1031bef718e77978f5b2e919ebe534759d2cebd8ad",
+    "size": "1323044",
+    "quotaBytesUsed": "1323044",
+    "headRevisionId": "0B35TVxwje5BxT2dlT3FIakNhaStQWlF5NEtiL29PVkJDd3FRPQ",
+    "isAppAuthorized": true,
+    "linkShareMetadata": {
+        "securityUpdateEligible": false,
+        "securityUpdateEnabled": true
+    },
+    "inheritedPermissionsDisabled": false
+}
