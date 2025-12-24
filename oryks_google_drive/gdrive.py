@@ -50,12 +50,12 @@ class GoogleDrive:
         if client_secret_file:
             self.client_secret_file = client_secret_file
         if not self.client_secret_file:
-            raise MissingClientSecretsFile('The client secret file must be provided.')
+            raise MissingClientSecretsFile("The client secret file must be provided.")
         if not Path(self.client_secret_file).exists():
-            raise FileNotFoundError('The client secret file was not found.')
-        api_service_name: str = 'drive'
-        api_version: str = 'v3'
-        credentials_dir: str = '.drive'
+            raise FileNotFoundError("The client secret file was not found.")
+        api_service_name: str = "drive"
+        api_version: str = "v3"
+        credentials_dir: str = ".drive"
         scopes: list[str] = [
             GoogleDriveScopes.drive.value,
         ]
@@ -72,9 +72,9 @@ class GoogleDrive:
             raise InvalidSecretsFileError(e)
 
     def authenticate_from_credentials(self, credentials_path: str) -> None:
-        api_service_name: str = 'drive'
-        api_version: str = 'v3'
-        credentials_dir: str = '.drive'
+        api_service_name: str = "drive"
+        api_version: str = "v3"
+        credentials_dir: str = ".drive"
         scopes: list[str] = [
             GoogleDriveScopes.drive.value,
         ]
@@ -105,20 +105,20 @@ class GoogleDrive:
             An iterator of file metadata dictionaries.
         """
         if not self.drive_client:
-            raise ValueError('Drive client is not authenticated.')
+            raise ValueError("Drive client is not authenticated.")
         results = (
             self.drive_client.files()
-            .list(pageSize=100, fields='files(id, name)')
+            .list(pageSize=100, fields="files(id, name)")
             .execute()
         )
-        items = results.get('files', [])
+        items = results.get("files", [])
         if not items:
             return iter([])
         for item in items:
             yield {
-                'id': item['id'],
-                'name': item['name'],
-                'size': item.get('size', 0),  # Size may not be available for all files
+                "id": item["id"],
+                "name": item["name"],
+                "size": item.get("size", 0),  # Size may not be available for all files
             }
 
     def upload_file(self, file_path: str, mime_type: str) -> dict:
@@ -137,12 +137,12 @@ class GoogleDrive:
             The metadata of the uploaded file.
         """
         if not self.drive_client:
-            raise ValueError('Drive client is not authenticated.')
-        file_metadata = {'name': Path(file_path).name}
+            raise ValueError("Drive client is not authenticated.")
+        file_metadata = {"name": Path(file_path).name}
         media = MediaFileUpload(file_path, mimetype=mime_type)
         file = (
             self.drive_client.files()
-            .create(body=file_metadata, media_body=media, fields='id')
+            .create(body=file_metadata, media_body=media, fields="id")
             .execute()
         )
         return file
@@ -162,8 +162,8 @@ class GoogleDrive:
             The metadata of the file.
         """
         if not self.drive_client:
-            raise ValueError('Drive client is not authenticated.')
-        file = self.drive_client.files().get(fileId=file_id, fields='*').execute()
+            raise ValueError("Drive client is not authenticated.")
+        file = self.drive_client.files().get(fileId=file_id, fields="*").execute()
         return file
 
     def update_file_permissions(self, file_id: str, permissions: list[dict]) -> None:
@@ -177,12 +177,12 @@ class GoogleDrive:
             A list of permission dictionaries to apply to the file.
         """
         if not self.drive_client:
-            raise ValueError('Drive client is not authenticated.')
+            raise ValueError("Drive client is not authenticated.")
         for permission in permissions:
             self.drive_client.permissions().create(
                 fileId=file_id,
                 body=permission,
-                fields='id',
+                fields="id",
             ).execute()
 
     def download_file(self, file_id: str, file_path: str) -> bool:
@@ -199,7 +199,7 @@ class GoogleDrive:
             The content of the downloaded file.
         """
         if not self.drive_client:
-            raise ValueError('Drive client is not authenticated.')
+            raise ValueError("Drive client is not authenticated.")
         request = self.drive_client.files().get_media(fileId=file_id)
         fh = io.BytesIO()
 
@@ -215,16 +215,16 @@ class GoogleDrive:
             fh.seek(0)
 
             # Write the received data to the file
-            with open(file_path, 'wb') as f:
+            with open(file_path, "wb") as f:
                 shutil.copyfileobj(fh, f)
 
-            print('File Downloaded')
+            print("File Downloaded")
             # Return True if file Downloaded successfully
             return True
         except:
 
             # Return False if something went wrong
-            print('Something went wrong.')
+            print("Something went wrong.")
             return False
 
     def download_file_content(self, file_id: str) -> bytes:
@@ -241,7 +241,7 @@ class GoogleDrive:
             The content of the downloaded file.
         """
         if not self.drive_client:
-            raise ValueError('Drive client is not authenticated.')
+            raise ValueError("Drive client is not authenticated.")
         request = self.drive_client.files().get_media(fileId=file_id)
         fh = io.BytesIO()
 
@@ -258,7 +258,7 @@ class GoogleDrive:
             return fh.read()
         except Exception as e:
             print(f"Something went wrong: {e}")
-            return b''
+            return b""
 
     def move_file(self, file_id: str, new_folder_id: str) -> dict:
         """Move a file to a new folder.
@@ -276,10 +276,10 @@ class GoogleDrive:
             The updated metadata of the moved file.
         """
         if not self.drive_client:
-            raise ValueError('Drive client is not authenticated.')
+            raise ValueError("Drive client is not authenticated.")
         # Retrieve the existing parents to remove
-        file = self.drive_client.files().get(fileId=file_id, fields='parents').execute()
-        previous_parents = ','.join(file.get('parents'))
+        file = self.drive_client.files().get(fileId=file_id, fields="parents").execute()
+        previous_parents = ",".join(file.get("parents"))
         # Move the file to the new folder
         file = (
             self.drive_client.files()
@@ -287,7 +287,7 @@ class GoogleDrive:
                 fileId=file_id,
                 addParents=new_folder_id,
                 removeParents=previous_parents,
-                fields='id, parents',
+                fields="id, parents",
             )
             .execute()
         )
@@ -311,15 +311,15 @@ class GoogleDrive:
             The metadata of the created folder.
         """
         if not self.drive_client:
-            raise ValueError('Drive client is not authenticated.')
+            raise ValueError("Drive client is not authenticated.")
         file_metadata = {
-            'name': folder_name,
-            'mimeType': 'application/vnd.google-apps.folder',
+            "name": folder_name,
+            "mimeType": "application/vnd.google-apps.folder",
         }
         if parent_folder_id:
-            file_metadata['parents'] = [parent_folder_id]
+            file_metadata["parents"] = [parent_folder_id]
         folder = (
-            self.drive_client.files().create(body=file_metadata, fields='id').execute()
+            self.drive_client.files().create(body=file_metadata, fields="id").execute()
         )
         return folder
 
@@ -336,18 +336,18 @@ class GoogleDrive:
             An iterator of folder metadata dictionaries.
         """
         if not self.drive_client:
-            raise ValueError('Drive client is not authenticated.')
+            raise ValueError("Drive client is not authenticated.")
         query = f"name = '{folder_name}' and mimeType = 'application/vnd.google-apps.folder'"
         results = (
-            self.drive_client.files().list(q=query, fields='files(id, name)').execute()
+            self.drive_client.files().list(q=query, fields="files(id, name)").execute()
         )
-        items = results.get('files', [])
+        items = results.get("files", [])
         if not items:
             return iter([])
         for item in items:
             yield {
-                'id': item['id'],
-                'name': item['name'],
+                "id": item["id"],
+                "name": item["name"],
             }
 
     def list_folders(self, page_size: int = 10) -> Iterator[dict]:
@@ -364,18 +364,47 @@ class GoogleDrive:
             An iterator of folder metadata dictionaries.
         """
         if not self.drive_client:
-            raise ValueError('Drive client is not authenticated.')
+            raise ValueError("Drive client is not authenticated.")
         query = "mimeType = 'application/vnd.google-apps.folder'"
         results = (
             self.drive_client.files()
-            .list(q=query, pageSize=page_size, fields='files(id, name)')
+            .list(q=query, pageSize=page_size, fields="files(id, name)")
             .execute()
         )
-        items = results.get('files', [])
+        items = results.get("files", [])
         if not items:
             return iter([])
         for item in items:
             yield {
-                'id': item['id'],
-                'name': item['name'],
+                "id": item["id"],
+                "name": item["name"],
+            }
+
+    def list_files_in_folder(self, folder_id: str) -> Iterator[dict]:
+        """List files in a folder in the Google Drive.
+
+        Parameters
+        ----------
+        folder_id: str
+            The ID of the folder.
+
+        Returns
+        -------
+        Iterator[dict]
+            An iterator of file metadata dictionaries.
+        """
+        if not self.drive_client:
+            raise ValueError("Drive client is not authenticated.")
+        results = (
+            self.drive_client.files()
+            .list(q=f"'{folder_id}' in parents", fields="files(id, name)")
+            .execute()
+        )
+        items = results.get("files", [])
+        if not items:
+            return iter([])
+        for item in items:
+            yield {
+                "id": item["id"],
+                "name": item["name"],
             }

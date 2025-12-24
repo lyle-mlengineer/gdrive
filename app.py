@@ -48,5 +48,8 @@ file_id = '1alI9X1YZRa2XY6eBMOMXWbOYXTiEPrxg'
 # folder_id = '176sZiyVaHQlIeZvLZVO3Wy3IJvxN-vqe'
 # resp = drive.move_file(file_id, folder_id)
 # print(resp)
-for folder in drive.list_folders():
-    print(f"Folder ID: {folder['id']}, Name: {folder['name']}")
+# for folder in drive.list_folders():
+#     print(f"Folder ID: {folder['id']}, Name: {folder['name']}")
+folder_id: str = "1jYlksmN4vIcNkBuSoPrUfvZAQ9iO5fnA"
+for file in drive.list_files_in_folder(folder_id):
+    print(f"File ID: {file['id']}, Name: {file['name']}")
