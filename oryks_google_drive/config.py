@@ -1,2 +1,2 @@
 class Config:
-    TIME_OUT = 300  # seconds
+    TIME_OUT = 120  # seconds
