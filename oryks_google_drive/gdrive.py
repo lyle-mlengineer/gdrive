@@ -1,5 +1,6 @@
 import io
 import shutil
+import socket
 from pathlib import Path
 from typing import Any, Iterator, Optional
 
@@ -10,7 +11,12 @@ from gverify import GoogleDriveScopes, GoogleOAuth
 from gverify.exceptions import InvalidSecretsFileException
 from pydantic import BaseModel
 
+from .config import Config
 from .exceptions import InvalidSecretsFileError, MissingClientSecretsFile
+
+config = Config()
+
+socket.setdefaulttimeout(config.TIME_OUT)
 
 
 class GoogleDrive:
